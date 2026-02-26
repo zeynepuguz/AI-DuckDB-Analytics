@@ -1,14 +1,14 @@
-# 🚀 AI DuckDB Analytics
+# 🚀 AI DuckDB RAG Chatbot
 
-This repository contains **two practical AI + Data Engineering projects** built around DuckDB and LlamaIndex.
+This repository contains a practical implementation of a **Retrieval-Augmented Generation (RAG) chatbot** built using:
 
-The goal is to demonstrate:
+- 🧠 LlamaIndex
+- 🤖 OpenAI GPT-4o
+- 🔎 OpenAI Embeddings
+- 🗄 Local document indexing
+- 📚 Source-aware answer generation
 
-- 🧠 Retrieval-Augmented Generation (RAG)
-- 🗄 DuckDB as a local analytics engine
-- 🔎 Natural Language → SQL query generation
-- 📚 Document indexing and source-aware responses
-- 💬 Memory-enabled conversational AI
+The system indexes local documents and generates grounded answers with references.
 
 ---
 
@@ -17,50 +17,100 @@ The goal is to demonstrate:
 AI-DuckDB-Analytics/
 │
 ├── data/
-│   ├── bank-marketing.csv
 │   └── notes.txt
 │
 ├── assets/
 │   └── image.png
 │
-├── rag_app.py          → Project 1 (RAG chatbot)
-├── analysis.py         → DuckDB analytics queries
-├── db_setup.py         → Database initialization
-├── datacamp.duckdb     → DuckDB database file
+├── rag_app.py
 ├── requirements.txt
+├── .env
 └── README.md
 
 ---
 
-# 🧠 Project 1 — Local RAG Chatbot (LlamaIndex + OpenAI)
+# 🧠 Project Overview
 
-This project builds a **Retrieval-Augmented Generation system** using:
+This project implements a **local Retrieval-Augmented Generation (RAG) system**.
 
-- LlamaIndex
-- OpenAI GPT-4o
-- OpenAI Embeddings
-- Local documents
-- Optional conversational memory
+Instead of relying only on a large language model’s internal knowledge, the system:
 
-## What It Does
+1. Loads local `.txt` documents
+2. Converts them into embeddings
+3. Builds a vector index
+4. Retrieves relevant context
+5. Generates grounded answers using GPT-4o
+6. Displays source documents with similarity scores
 
-- Loads `.txt` documents from `/data`
-- Converts them into embeddings
-- Builds a vector index
-- Retrieves relevant context
-- Generates grounded answers
-- Displays similarity scores and sources
+This ensures responses are transparent and based on actual indexed data.
 
-## Run It
+---
+
+# ⚙️ How It Works
+
+User Question  
+↓  
+Embedding Generation  
+↓  
+Vector Similarity Search  
+↓  
+Context Retrieval  
+↓  
+LLM Response Generation  
+↓  
+Answer + Source References
+
+---
+
+# ▶️ How to Run
+
+## 1️⃣ Create Virtual Environment
 
 ```bash
-python rag_app.py
+python -m venv .venv
 ```
-## Example question:
 
-- What is this project about?
+Activate:
 
-## Example response:
+Windows:
 
-- This project builds a local RAG chatbot using LlamaIndex.
-- It indexes documents in the data folder and answers questions with source references.
+.venv\Scripts\activate
+
+Mac/Linux:
+
+source .venv/bin/activate
+2️⃣ Install Dependencies
+pip install -r requirements.txt
+3️⃣ Add OpenAI API Key
+
+Create a .env file:
+
+OPENAI_API_KEY=your_api_key_here
+4️⃣ Run the Application
+python rag_app.py
+💬 Example Question
+What is this project about?
+✅ Example Response
+This project builds a local RAG chatbot using LlamaIndex.
+It indexes documents in the data folder and answers questions with source references.
+🖼 Example Output
+
+🏗 Tech Stack
+
+Python 3.10+
+
+LlamaIndex
+
+OpenAI GPT-4o
+
+OpenAI Embeddings
+
+Local Vector Index
+
+🎯 What This Project Demonstrates
+
+✔ Retrieval-Augmented Generation
+✔ Local document indexing
+✔ Vector similarity search
+✔ Source-aware AI responses
+✔ Practical AI system design
