@@ -1,0 +1,3 @@
+This project builds a local RAG chatbot using LlamaIndex.
+It indexes documents in the data/ folder and answers questions with sources.
+DuckDB is used for analytics on the bank-marketing dataset, and can also be used as a persistent vector store (optional).
